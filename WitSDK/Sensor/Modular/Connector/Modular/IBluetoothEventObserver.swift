@@ -9,15 +9,15 @@ import Foundation
 
 public protocol IBluetoothEventObserver {
     
-    // MARK: 当搜索到蓝牙时
+    // MARK: When a Bluetooth device is found
     func onFoundBle(bluetoothBLE: BluetoothBLE?)
     
-    // MARK: 当蓝牙连接成功时
+    // MARK: When Bluetooth connection is successful
     func onConnected(bluetoothBLE: BluetoothBLE?)
     
-    // MARK: 当蓝牙断开时
+    // MARK: When Bluetooth is disconnected
     func onDisconnected(bluetoothBLE: BluetoothBLE?)
     
-    // MARK: 当连接失败时
+    // MARK: When connection fails
     func onConnectionFailed(bluetoothBLE: BluetoothBLE?)
 }

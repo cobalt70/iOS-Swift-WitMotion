@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import CoreBluetooth
+import Combine
+
 
 public class Bwt901ble :Identifiable, ObservableObject{
     

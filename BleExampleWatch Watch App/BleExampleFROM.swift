@@ -16,7 +16,7 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     
     // 获得蓝牙管理器
     // Get bluetooth manager
-    var bluetoothManager:WitBluetoothManager = WitBluetoothManager.instance 
+    let bluetoothManager:WitBluetoothManager = WitBluetoothManager.instance 
     
     // 是否扫描设备中
     // Whether to scan the device
@@ -24,12 +24,11 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     
     // 蓝牙5.0传感器对象
     // Bluetooth 5.0 sensor object
-    @Published var deviceList:[Bwt901ble] = [Bwt901ble]()
+    @Published var deviceList:[Bwt901ble] = []
     
     // 要显示的设备数据
     // Device data to display
-    @Published
-    var deviceData:String = " device not connected"
+    @Published var deviceData: String = "device not connected"
     
     init(){
        
@@ -43,7 +42,7 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     
     // MARK: Start scanning for devices
     @MainActor func scanDevices() {
-        print("Start scanning for surrounding bluetooth devices  WatchKit Extension")
+        print("Start scanning devices...")
         
         // Remove all devices, here all devices are turned off and removed from the list
         removeAllDevice()
@@ -61,14 +60,18 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
         if isNotFound(bluetoothBLE) {
             print("\(String(describing: bluetoothBLE?.peripheral.name)) found a bluetooth device \(bluetoothBLE?.mac ?? "")")
             self.deviceList.append(Bwt901ble(bluetoothBLE: bluetoothBLE))
+            print("self.deviceList.count:\(self.deviceList.count) \(self.deviceList)")
         }
     }
-    
-    // 判断设备还未找到
+
     // Judging that the device has not been found
     func isNotFound(_ bluetoothBLE: BluetoothBLE?) -> Bool{
+        guard let bluetoothBLE = bluetoothBLE else {
+            print("bluetooth ble is nil")
+            return false
+        }
         for device in deviceList {
-            if device.mac == bluetoothBLE?.mac {
+            if device.mac == bluetoothBLE.mac {
                 return false
             }
         }
@@ -78,18 +81,18 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
    
     // MARK: You will be notified here when the connection is successful
     func onConnected(bluetoothBLE: BluetoothBLE?) {
-        print("\(String(describing: bluetoothBLE?.peripheral.name))")
+        print("\(String(describing: bluetoothBLE?.peripheral.name)) found a bluetooth device \(bluetoothBLE?.mac ?? "")")
     }
     
   
     // MARK: Notifies you here when the connection fails
     func onConnectionFailed(bluetoothBLE: BluetoothBLE?) {
-        print("\(String(describing: bluetoothBLE?.peripheral.name)) ")
+        print("\(String(describing: bluetoothBLE?.peripheral.name)) found a bluetooth device \(bluetoothBLE?.mac ?? "")")
     }
     
     // MARK: You will be notified here when the connection is lost
     func onDisconnected(bluetoothBLE: BluetoothBLE?) {
-        print("\(String(describing: bluetoothBLE?.peripheral.name))")
+        print("\(String(describing: bluetoothBLE?.peripheral.name)) found a bluetooth device \(bluetoothBLE?.mac ?? "")")
     }
     
    
@@ -119,9 +122,9 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
  
     // MARK: Remove all devices
     @MainActor func removeAllDevice(){
-        print("device List \(deviceList)")
+        print("device List in the removeAllDevice: \(deviceList)")
         for item in deviceList {
-        
+            print("device in the removeAllDevice: \(item)")
             closeDevice(bwt901ble: item)
         }
         print("remove all device")
@@ -142,7 +145,7 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
         let deviceData =  getDeviceDataToString(bwt901ble)
         
         // 打印到控制台,您也可以在这里把数据记录到您的文件中  Prints to the console, where you can also log the data to your file
-        print(deviceData)
+        print("onRecrod: \(deviceData)")
     }
     
    
@@ -168,7 +171,7 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
             var tmpDeviceData:String = ""
           
             // Print the data of each device
-            print("deviceList  \(deviceList)")
+            print("deviceList in the  refreshView  \(deviceList)")
             for device in deviceList {
                 if (device.isOpen){
               
@@ -340,20 +343,11 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
 // **********************************************************
 struct HomeView: View {
     
-    // App上下文
+    
     // App the context
-    @ObservedObject var viewModel:AppContext
+    @EnvironmentObject var viewModel:AppContext
     
-  
-    // MARK: Constructor
-    init(_ viewModel:AppContext) {
-       
-        // View model
-        self.viewModel = viewModel
-    }
-    
-    
-    // MARK: UI page
+  // MARK: UI page
     var body: some View {
         ZStack(alignment: .leading) {
             VStack(alignment: .center){
@@ -366,21 +360,21 @@ struct HomeView: View {
                         Button("Acc cali") {
                             viewModel.appliedCalibration()
                         }.padding(5)
-                        Button("Start mag cali"){
+                        Button("Start mag"){
                             viewModel.startFieldCalibration()
                         }.padding(5)
-                        Button("Stop mag cali"){
+                        Button("Stop mag"){
                             viewModel.endFieldCalibration()
                         }.padding(5)
                     }.font(Font.system(size: 10))
                     VStack{
-                        Button("Read 03 reg"){
+                        Button("Read03reg"){
                             viewModel.readReg03()
                         }.padding(10)
-                        Button("Set 50hz rate"){
+                        Button("Set50hzrate"){
                             viewModel.setBackRate50hz()
                         }.padding(10)
-                        Button("Set 10hz rate"){
+                        Button("Set10hzrate"){
                             viewModel.setBackRate10hz()
                         }.padding(10)
                     }.font(Font.system(size: 10))
@@ -391,23 +385,23 @@ struct HomeView: View {
                         .font(Font.system(size: 10))
                 }
                 
-                List{
-                    Text(self.viewModel.deviceData)
-                        .fontWeight(.light)
-                        .font(.body)
-                }
+                
+                Text(self.viewModel.deviceData)
+                    .fontWeight(.light)
+                    .font(.body)
+                
                 
             }
         }.navigationBarHidden(true)
     }
 }
 
-
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(AppContext())
-    }
-}
+//
+//struct Home_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}
 
 
 // **********************************************************
@@ -416,50 +410,51 @@ struct Home_Previews: PreviewProvider {
 // **********************************************************
 struct ConnectView: View {
     
-    
-    // App the context
-    @ObservedObject var viewModel:AppContext
-    
+    // App context
+    @EnvironmentObject var viewModel: AppContext
     
     // MARK: Constructor
-    init(_ viewModel:AppContext) {
-        
-        // View model
-        self.viewModel = viewModel
-    }
-    
-   
+  
     // MARK: UI page
     var body: some View {
         ZStack(alignment: .leading) {
             VStack{
                 Toggle(isOn: $viewModel.enableScan){
-                    Text("Turn on scanning for surrounding devices")
-                }.onChange(of: viewModel.enableScan) { _ , value in
+                    Text("Turn on :")
+                }.onChange(of: viewModel.enableScan) {_, value in
                     if value {
                         viewModel.scanDevices()
-                    }else{
+                    } else {
                         viewModel.stopScan()
                     }
                 }.padding(5)
-              
-                List{
-                    ForEach (self.viewModel.deviceList){ device in
+                
+                ScrollViewReader { proxy in
+                    
+                    ForEach (self.viewModel.deviceList) { device in
                         Bwt901bleView(device, viewModel)
                     }
-           
+                    .onAppear {
+                        print(" list: \(self.viewModel.deviceList) count:  \(self.viewModel.deviceList.count)")
+                    }
+                    .onChange(of:self.viewModel.deviceList.count) {
+                        print(" list: \(self.viewModel.deviceList) count:  \(self.viewModel.deviceList.count)")
+                    }
+                    
                 }
-            }
+                
+            }.font(Font.system(size: 12))
         }
     }
 }
 
 
-struct ConnectView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectView(AppContext())
-    }
-}
+//struct ConnectView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConnectView()
+//          
+//    }
+//}
 
 // **********************************************************
 
@@ -468,38 +463,37 @@ struct ConnectView_Previews: PreviewProvider {
 struct Bwt901bleView: View{
     
    
-    // bwt901ble instance
-    @ObservedObject var device:Bwt901ble
+    // Bwt901ble instance
+    @ObservedObject var device: Bwt901ble
     
-    
-    // App the context
-    @ObservedObject var viewModel:AppContext
-    
+    // App context
+    @ObservedObject var viewModel: AppContext
     
     // MARK: Constructor
-    init(_ device:Bwt901ble,_ viewModel:AppContext){
+    init(_ device: Bwt901ble, _ viewModel: AppContext) {
         self.device = device
         self.viewModel = viewModel
     }
-    
     
     // MARK: UI page
     var body: some View {
         VStack {
             Toggle(isOn: $device.isOpen) {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("\(device.name ?? "")")
-                        .font(.headline)
+                        .font(Font.system(size: 12))
                     Text("\(device.mac ?? "")")
-                        .font(.subheadline)
+                        .font(Font.system(size: 12))
                 }
-            }.onChange(of: device.isOpen) {_, value in
+
+            }.onChange(of: device.isOpen) { _, value in
                 if value {
                     viewModel.openDevice(bwt901ble: device)
                 }else{
                     viewModel.closeDevice(bwt901ble: device)
                 }
             }
+            .font(Font.system(size: 12))
             .padding(10)
         }
     }

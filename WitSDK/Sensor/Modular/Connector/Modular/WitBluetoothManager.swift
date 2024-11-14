@@ -8,29 +8,36 @@
 import Foundation
 import CoreBluetooth
 
-//用于看发送数据是否成功!`
+
+// Used to check if the data was sent successfully!
+
 public class WitBluetoothManager:NSObject {
     
-    // 单例对象
-    @MainActor public static let instance = WitBluetoothManager()
+    // Singleton object
+
+   public static let instance = WitBluetoothManager()
     
-    // 中心对象
+    // Central object
+
     var central: CBCentralManager?
     
-    // 中心扫描到的设备都可以保存起来，
-    // 扫描到新设备后可以通过通知的方式发送出去，连接设备界面可以接收通知，实时刷新设备列表
+    //All devices discovered by the central can be saved.
+    //When a new device is discovered, it can be sent via notification.
+    //The device connection interface can receive the notification and refresh the device list in real-time.
+
     var deviceList: NSMutableArray?
     
-    // 低功耗蓝牙客户端
+    // Low-energy Bluetooth client
     var bluetoothBLEDist: [String:BluetoothBLE]?
     
-    // 观察者集合
+    // Set of observers
     var observerList:[IBluetoothEventObserver] = [IBluetoothEventObserver]()
     
-    // 是否扫描中
+    // Scanning in progress
+
     public var isScaning = false
     
-    // MARK: 构造方法
+    // MARK: Initializer
     private override init() {
         
         super.init()
@@ -41,13 +48,15 @@ public class WitBluetoothManager:NSObject {
         
     }
     
-    // MARK: 扫描设备的方法,指定搜索条件
+    // MARK: Method to scan for devices with specified search criteria
     public func startScan(_ serviceUUIDS:[CBUUID]?, options:[String: AnyObject]?){
-        // 清除所有已经找到的设备
+        // Clear all discovered devices
+
         self.bluetoothBLEDist?.removeAll()
-        // 开启扫描
+        // Start scanning
+
         self.central?.scanForPeripherals(withServices: serviceUUIDS, options: options)
-        // 标识为扫描中
+        // Mark as scanning in progress
         self.isScaning = true
     }
         public func startScan(){
@@ -112,7 +121,8 @@ extension WitBluetoothManager{
     }
     
     
-    // MARK: 通知蓝牙事件观察者，找到了低功耗蓝牙设备
+    // MARK: Notify Bluetooth event observers that a low-energy Bluetooth device has been found
+
     func notifyObserverOnFoundBle(_ bluetoothBLE: BluetoothBLE?){
         for item in self.observerList{
             item.onFoundBle(bluetoothBLE: bluetoothBLE)
@@ -120,14 +130,16 @@ extension WitBluetoothManager{
     }
     
     
-    // MARK: 通知蓝牙事件观察者，低功耗蓝牙连接成功
+    // MARK: Notify Bluetooth event observers that the low-energy Bluetooth connection was successful
+
     func notifyObserverOnConnected(_ bluetoothBLE: BluetoothBLE?){
         for item in self.observerList{
             item.onConnected(bluetoothBLE: bluetoothBLE)
         }
     }
     
-    // MARK: 通知蓝牙事件观察者，低功耗蓝牙连接断开
+    // MARK: Notify Bluetooth event observers that the low-energy Bluetooth connection was disconnected
+
     func notifyObserverOnDisconnected(_ bluetoothBLE: BluetoothBLE?){
         for item in self.observerList{
             item.onDisconnected(bluetoothBLE: bluetoothBLE)
@@ -137,34 +149,35 @@ extension WitBluetoothManager{
 
 
 
-// MARK: -- 中心管理器的代理
+// MARK: -- Central Manager Delegate
+
 extension WitBluetoothManager : CBCentralManagerDelegate{
     
-    // MARK: 检查运行这个App的设备是不是支持BLE。
+    // MARK: Check if the device running this app supports BLE.
     public func centralManagerDidUpdateState(_ central: CBCentralManager){
         
         if #available(iOS 10.0, *) {
             switch central.state {
                 
             case CBManagerState.poweredOn:
-                print("当前设备蓝牙状态：打开的")
+                print("Current device Bluetooth status: On")
                 
             case CBManagerState.unauthorized:
-                print("当前设备蓝牙状态：没有蓝牙功能")
+                print("Current device Bluetooth status: No Bluetooth available")
                 
             case CBManagerState.poweredOff:
-                print("当前设备蓝牙状态：关闭的")
+                print("Current device Bluetooth status: Off")
                 
             default:
-                print("当前设备蓝牙状态：未知状态")
+                print("Current device Bluetooth status: Unknown status")
             }
+            //
+            
         }
-        // 手机蓝牙状态发生变化，可以发送通知出去。提示用户
-        
     }
     
-    
-    // MARK: 中心管理器扫描到了设备   开始扫描之后会扫描到蓝牙设备，扫描到之后走到这个代理方法
+//     MARK: Central manager discovered a device. After starting the scan, Bluetooth devices will be discovered, and this delegate method will be called once a device is found.
+
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         //  在这个地方可以判读是不是自己本公司的设备,这个是根据设备的名称过滤的
@@ -174,26 +187,29 @@ extension WitBluetoothManager : CBCentralManagerDelegate{
         
         var ble:BluetoothBLE?
         
-        //  这里判断重复，加到设备列表中。发出通知。
+        // Check for duplicates here and add to the device list. Then send a notification.
+
         if self.bluetoothBLEDist?.keys.contains(peripheral.identifier.uuidString) == false {
             self.bluetoothBLEDist?[peripheral.identifier.uuidString] = BluetoothBLE(peripheral)
         }
         
-        // 拿到蓝牙5.0连接对象
+        // Get the Bluetooth 5.0 connection object
         ble = self.bluetoothBLEDist?[peripheral.identifier.uuidString]
         
-        // 通知观察者已经搜索到了设备
+        // Notify observers that the device has been found
+        notifyObserverOnFoundBle(ble)
         notifyObserverOnFoundBle(ble)
     }
     
     
-    // MARK: 连接外设成功，开始发现服务
+    // MARK: Successfully connected to the peripheral, start discovering services
+
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral){
         
-        // 开始发现服务
+        // Start discovering services
         peripheral.discoverServices(nil)
         
-        // 这里可以发通知出去告诉设备连接界面连接成功
+        // You can send a notification here to inform the device connection interface that the connection was successful
         let ble = self.bluetoothBLEDist?[peripheral.identifier.uuidString]
         if(ble != nil){
             //ble?.onConnected()
@@ -201,20 +217,23 @@ extension WitBluetoothManager : CBCentralManagerDelegate{
         }
     }
     
-    
-    // MARK: 连接外设失败
+    // MARK: Failed to connect to the peripheral
+
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         
         // 这里可以发通知出去告诉设备连接界面连接失败
-        
+        // You can send a notification here to inform the device connection interface that the connection failed
+
     }
     
     
-    // MARK: 连接丢失
+    // MARK: Connection lost
+
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "DidDisConnectPeriphernalNotification"), object: nil, userInfo: ["deviceList": self.deviceList as AnyObject])
         
-        // 这里可以发通知出去告诉设备连接界面连接丢失
+        // You can send a notification here to inform the device connection interface that the connection was lost
+
         let ble = self.bluetoothBLEDist?[peripheral.identifier.uuidString]
         if(ble != nil){
             notifyObserverOnDisconnected(ble)

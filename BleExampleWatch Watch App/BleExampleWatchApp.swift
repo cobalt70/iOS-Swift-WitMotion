@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BleExampleWatch_Watch_AppApp: App {
+    @StateObject var appContext: AppContext = AppContext()
+     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appContext)
         }
     }
 }

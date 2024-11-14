@@ -10,16 +10,18 @@ import CoreBluetooth
 import WitSDKWatch
 
 struct ContentView: View {
-    var appContext:AppContext = AppContext()
+    @EnvironmentObject var appContext : AppContext
     
     var body: some View {
         ScrollView {
             
             
             VStack {
-                ConnectView(appContext)
+                ConnectView()
+                    .environmentObject(appContext)
                 
-                HomeView(appContext)
+                HomeView()
+                    .environmentObject(appContext)
             }
             .padding()
         }

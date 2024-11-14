@@ -108,21 +108,25 @@ extension BluetoothBLE : IDataObserved{
 }
 
 
-// 发现服务委托
+// Delegate for discovering services
+
 extension BluetoothBLE : CBPeripheralDelegate {
     
-    //  MARK: - 匹配对应服务UUID
+ // MARK: - Match corresponding service UUID
+
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?){
         
         if error != nil {
             return
         }
         
-        // 遍历所有的服务
+        // Iterate through all services
+
         for service in peripheral.services! {
-            // 如果是指定的服务器ID则开始寻找特征值
+            // If it is the specified service UUID, start searching for characteristics
             // print("SERVICE UUID ID:\(service.uuid.uuidString.uppercased())")
-            // 如果是低功耗单模蓝牙
+            // If it is Low Energy Single Mode Bluetooth
+
             if service.uuid.uuidString.uppercased() == BLEUUID.UUID_SERVICE.uppercased() {
                 self.uuidService = BLEUUID.UUID_SERVICE
                 self.uuidRead = BLEUUID.UUID_READ
@@ -130,7 +134,8 @@ extension BluetoothBLE : CBPeripheralDelegate {
                 peripheral.discoverCharacteristics(nil, for: service )
             }
             
-            // 如果是双模蓝牙
+            // If it is Dual Mode Bluetooth
+
             if service.uuid.uuidString == DualUUID.UUID_SERVICE {
                 self.uuidService = DualUUID.UUID_SERVICE
                 self.uuidRead = DualUUID.UUID_READ
@@ -141,7 +146,7 @@ extension BluetoothBLE : CBPeripheralDelegate {
         
     }
     
-    //MARK: - 服务下的特征
+  // MARK: - Characteristics under the service
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?){
         
         if (error != nil){
@@ -149,30 +154,31 @@ extension BluetoothBLE : CBPeripheralDelegate {
         }
         
         for  characteristic in service.characteristics! {
-            print("找到设备特征值UUID：\(characteristic.uuid.description)")
+            print("Find the device characteristic value UUID：\(characteristic.uuid.description)")
             switch characteristic.uuid.description.uppercased() {
                 case self.uuidRead:
-                    // 订阅特征值，订阅成功后后续所有的值变化都会自动通知
-                    peripheral.setNotifyValue(true, for: characteristic)
-                    break
-                case "******":
-                    // 读区特征值，只能读到一次
-                    peripheral.readValue(for:characteristic)
-                    break
-                case self.uuidSend:
-                    // 拿到写特征值
-                    sendCharacteristic = characteristic
-                    break
-                default:
-                    // print("扫描到其他特征")
-                    break
+                //Subscribe to the characteristic value, and after a successful subscription,
+                //all subsequent value changes will be automatically notified
+                peripheral.setNotifyValue(true, for: characteristic)
+                break
+            case "******":
+                // Read the characteristic value in the read-only area, which can only be read once
+                peripheral.readValue(for:characteristic)
+                break
+            case self.uuidSend:
+                // Obtain the write characteristic value
+                sendCharacteristic = characteristic
+                break
+            default:
+                print("Scan for other characteristics.")
+                break
             }
             
         }
         
     }
     
-    //MARK: - 特征的订阅状体发生变化
+    //MARK: - The subscription status of the characteristic has changed."
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?){
         
         guard error == nil  else {
@@ -181,8 +187,9 @@ extension BluetoothBLE : CBPeripheralDelegate {
         
     }
     
-    // MARK: - 获取外设发来的数据
-    // 注意，所有的，不管是 read , notify 的特征的值都是在这里读取
+    // MARK: - Get data received from the peripheral
+    // Note: All characteristic values, whether read or notify, are received here
+
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?)-> (){
         
         if(error != nil){
@@ -207,46 +214,48 @@ extension BluetoothBLE : CBPeripheralDelegate {
             }
             break
         default:
-            print("收到了其他数据特征数据: \(characteristic.uuid.uuidString)")
+            print("Received other characteristic data: \(characteristic.uuid.uuidString)")
             break
         }
     }
     
     
     
-    //MARK: - 检测中心向外设写数据是否成功
+    //MARK:  Check if the data written from the central to the peripheral was successful
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if(error != nil){
-            print("发送数据失败!error信息: \(String(describing: error))")
+            print(" Failed to send data! Error information: : \(String(describing: error))")
         }
     }
     
 }
 
-// 低功耗蓝牙UUID
+// // Bluetooth Low Energy UUID
+
 class BLEUUID{
     
-    // 服务uuid
+    // Service uuid
     static let UUID_SERVICE:String = "0000ffe5-0000-1000-8000-00805f9a34fb".uppercased()
     
-    // 发送特征值uuid
+    // Send characteristic value uuid
     static let UUID_SEND:String = "0000ffe9-0000-1000-8000-00805f9a34fb".uppercased()
     
-    // 读取特征值uuid
+    //  Read characteristic value uuid
     static let UUID_READ:String = "0000ffe4-0000-1000-8000-00805f9a34fb".uppercased()
 }
 
 
-// 双模蓝牙UUID
+//  Dual-mode Bluetooth UUID
 class DualUUID{
     
-    // 服务uuid
+    // Service UUID
     static let UUID_SERVICE:String = "49535343-fe7d-4ae5-8fa9-9fafd205e455".uppercased()
     
-    // 发送特征值uuid
+    //Send characteristic UUID
     static let UUID_SEND:String = "49535343-8841-43f4-a8d4-ecbe34729bb3".uppercased()
     
-    // 读取特征值uuid
+    // Read characteristic UUID
+
     static let UUID_READ:String = "49535343-1e4d-4bd9-ba61-23c647249616".uppercased()
 }
 
