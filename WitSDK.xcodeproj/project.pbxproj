@@ -1,0 +1,1303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE09BB5E2CE5E2A900707893 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE6F48172CE5C5CD00CAB4BB /* Info.plist */; platformFilter = ios; };
+		CE09BB622CE5E71E00707893 /* WitSDKWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */; };
+		CE09BB632CE5E71E00707893 /* WitSDKWatch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE6F481C2CE5C80700CAB4BB /* WitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE6F47C52CE5823900CAB4BB /* WitSDK.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE6F483C2CE5CA5E00CAB4BB /* WitSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6F47C52CE5823900CAB4BB /* WitSDK.framework */; platformFilter = ios; settings = {ATTRIBUTES = (Required, ); }; };
+		CE8FCEC02CE5DB6800E80AF2 /* Bwt901ble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707B28C3C0F7004EEAA2 /* Bwt901ble.swift */; platformFilters = (watchos, ); };
+		CE8FCEC12CE5DB6800E80AF2 /* IKeyUpdateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705F28C3C0F7004EEAA2 /* IKeyUpdateObserver.swift */; platformFilters = (watchos, ); };
+		CE8FCEC22CE5DB6800E80AF2 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705A28C3C0F7004EEAA2 /* StringUtils.swift */; platformFilters = (watchos, ); };
+		CE8FCEC32CE5DB6800E80AF2 /* BWT901BLE5_0DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift */; platformFilters = (watchos, ); };
+		CE8FCEC42CE5DB6800E80AF2 /* WitCoreConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706B28C3C0F7004EEAA2 /* WitCoreConnector.swift */; platformFilters = (watchos, ); };
+		CE8FCEC52CE5DB6800E80AF2 /* IBwt901bleRecordObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707C28C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift */; platformFilters = (watchos, ); };
+		CE8FCEC62CE5DB6800E80AF2 /* IListenKeyUpdateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706028C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift */; platformFilters = (watchos, ); };
+		CE8FCEC72CE5DB6800E80AF2 /* IBluetoothEventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706D28C3C0F7004EEAA2 /* IBluetoothEventObserver.swift */; platformFilters = (watchos, ); };
+		CE8FCEC82CE5DB6800E80AF2 /* CompareObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705D28C3C0F7004EEAA2 /* CompareObjectHelper.swift */; platformFilters = (watchos, ); };
+		CE8FCEC92CE5DB6800E80AF2 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482727228D4677B00138032 /* DateHelper.swift */; platformFilters = (watchos, ); };
+		CE8FCECA2CE5DB6800E80AF2 /* BWT901BLE5_0ProtocolResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707228C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift */; platformFilters = (watchos, ); };
+		CE8FCECB2CE5DB6800E80AF2 /* WitSDK.docc in Sources */ = {isa = PBXBuildFile; fileRef = D4CA700A28C3BFB2004EEAA2 /* WitSDK.docc */; platformFilters = (watchos, ); };
+		CE8FCECC2CE5DB6800E80AF2 /* DipSensorMagHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705928C3C0F7004EEAA2 /* DipSensorMagHelper.swift */; platformFilters = (watchos, ); };
+		CE8FCECD2CE5DB6800E80AF2 /* WitBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706F28C3C0F7004EEAA2 /* WitBluetoothManager.swift */; platformFilters = (watchos, ); };
+		CE8FCECE2CE5DB6800E80AF2 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705C28C3C0F7004EEAA2 /* DataHelper.swift */; platformFilters = (watchos, ); };
+		CE8FCECF2CE5DB6800E80AF2 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705728C3C0F7004EEAA2 /* DeviceModel.swift */; platformFilters = (watchos, ); };
+		CE8FCED02CE5DB6800E80AF2 /* DeviceModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707628C3C0F7004EEAA2 /* DeviceModelError.swift */; platformFilters = (watchos, ); };
+		CE8FCED12CE5DB6800E80AF2 /* WitSensorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706428C3C0F7004EEAA2 /* WitSensorKey.swift */; platformFilters = (watchos, ); };
+		CE8FCED22CE5DB6800E80AF2 /* BluetoothBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706E28C3C0F7004EEAA2 /* BluetoothBLE.swift */; platformFilters = (watchos, ); };
+		CE8FCED32CE5DB6800E80AF2 /* IDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706828C3C0F7004EEAA2 /* IDataProcessor.swift */; platformFilters = (watchos, ); };
+		CE8FCED42CE5DB6800E80AF2 /* SyncDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705B28C3C0F7004EEAA2 /* SyncDictionary.swift */; platformFilters = (watchos, ); };
+		CE8FCED52CE5DB6800E80AF2 /* IProtocolResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707428C3C0F7004EEAA2 /* IProtocolResolver.swift */; platformFilters = (watchos, ); };
+		CE8FCEE72CE5DDE200E80AF2 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705728C3C0F7004EEAA2 /* DeviceModel.swift */; platformFilter = ios; };
+		D482727328D4677B00138032 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482727228D4677B00138032 /* DateHelper.swift */; platformFilter = ios; };
+		D4A23C632A11E1BF000A3ADF /* BleExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A23C622A11E1BF000A3ADF /* BleExampleApp.swift */; platformFilter = ios; };
+		D4A23C672A11E1C0000A3ADF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A23C662A11E1C0000A3ADF /* Assets.xcassets */; };
+		D4A23C6A2A11E1C0000A3ADF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A23C692A11E1C0000A3ADF /* Preview Assets.xcassets */; };
+		D4CA700B28C3BFB2004EEAA2 /* WitSDK.docc in Sources */ = {isa = PBXBuildFile; fileRef = D4CA700A28C3BFB2004EEAA2 /* WitSDK.docc */; platformFilter = ios; };
+		D4CA707E28C3C0F7004EEAA2 /* DipSensorMagHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705928C3C0F7004EEAA2 /* DipSensorMagHelper.swift */; platformFilter = ios; };
+		D4CA707F28C3C0F7004EEAA2 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705A28C3C0F7004EEAA2 /* StringUtils.swift */; platformFilter = ios; };
+		D4CA708028C3C0F7004EEAA2 /* SyncDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705B28C3C0F7004EEAA2 /* SyncDictionary.swift */; platformFilter = ios; };
+		D4CA708128C3C0F7004EEAA2 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705C28C3C0F7004EEAA2 /* DataHelper.swift */; platformFilter = ios; };
+		D4CA708228C3C0F7004EEAA2 /* CompareObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705D28C3C0F7004EEAA2 /* CompareObjectHelper.swift */; platformFilter = ios; };
+		D4CA708328C3C0F7004EEAA2 /* IKeyUpdateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705F28C3C0F7004EEAA2 /* IKeyUpdateObserver.swift */; platformFilter = ios; };
+		D4CA708428C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706028C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift */; platformFilter = ios; };
+		D4CA708528C3C0F7004EEAA2 /* WitSensorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706428C3C0F7004EEAA2 /* WitSensorKey.swift */; platformFilter = ios; };
+		D4CA708628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift */; platformFilter = ios; };
+		D4CA708728C3C0F7004EEAA2 /* IDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706828C3C0F7004EEAA2 /* IDataProcessor.swift */; platformFilter = ios; };
+		D4CA708828C3C0F7004EEAA2 /* WitCoreConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706B28C3C0F7004EEAA2 /* WitCoreConnector.swift */; platformFilters = (ios, maccatalyst, ); };
+		D4CA708928C3C0F7004EEAA2 /* IBluetoothEventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706D28C3C0F7004EEAA2 /* IBluetoothEventObserver.swift */; platformFilter = ios; };
+		D4CA708A28C3C0F7004EEAA2 /* BluetoothBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706E28C3C0F7004EEAA2 /* BluetoothBLE.swift */; platformFilter = ios; };
+		D4CA708B28C3C0F7004EEAA2 /* WitBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA706F28C3C0F7004EEAA2 /* WitBluetoothManager.swift */; platformFilter = ios; };
+		D4CA708C28C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707228C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift */; platformFilter = ios; };
+		D4CA708D28C3C0F7004EEAA2 /* IProtocolResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707428C3C0F7004EEAA2 /* IProtocolResolver.swift */; platformFilter = ios; };
+		D4CA708E28C3C0F7004EEAA2 /* DeviceModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707628C3C0F7004EEAA2 /* DeviceModelError.swift */; platformFilter = ios; };
+		D4CA708F28C3C0F7004EEAA2 /* Bwt901ble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707B28C3C0F7004EEAA2 /* Bwt901ble.swift */; platformFilter = ios; };
+		D4CA709028C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707C28C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift */; platformFilter = ios; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		CE09BB602CE5E43700707893 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = file.bplist;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# builtin-copyPlist\n";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		CE09BB642CE5E71E00707893 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CA6FFD28C3BFB2004EEAA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE8FCEBD2CE5DB6800E80AF2;
+			remoteInfo = WitSDKWatch;
+		};
+		CE8FCEBB2CE5DB3A00E80AF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CA6FFD28C3BFB2004EEAA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4CA700528C3BFB2004EEAA2;
+			remoteInfo = WitSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE0B100C2CE4F8C800721A31 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE6F484E2CE5D6DC00CAB4BB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE09BB632CE5E71E00707893 /* WitSDKWatch.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46CD30D2A1637FD001465E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE6F481C2CE5C80700CAB4BB /* WitSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE0B0FFB2CE4F8C700721A31 /* BleExampleWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BleExampleWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6F47C52CE5823900CAB4BB /* WitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE6F48172CE5C5CD00CAB4BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WitSDKWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D482727228D4677B00138032 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		D4A23C602A11E1BF000A3ADF /* BleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A23C622A11E1BF000A3ADF /* BleExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleExampleApp.swift; sourceTree = "<group>"; };
+		D4A23C662A11E1C0000A3ADF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4A23C692A11E1C0000A3ADF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D4CA700A28C3BFB2004EEAA2 /* WitSDK.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WitSDK.docc; sourceTree = "<group>"; };
+		D4CA705728C3C0F7004EEAA2 /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		D4CA705928C3C0F7004EEAA2 /* DipSensorMagHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DipSensorMagHelper.swift; sourceTree = "<group>"; };
+		D4CA705A28C3C0F7004EEAA2 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		D4CA705B28C3C0F7004EEAA2 /* SyncDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncDictionary.swift; sourceTree = "<group>"; };
+		D4CA705C28C3C0F7004EEAA2 /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		D4CA705D28C3C0F7004EEAA2 /* CompareObjectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareObjectHelper.swift; sourceTree = "<group>"; };
+		D4CA705F28C3C0F7004EEAA2 /* IKeyUpdateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKeyUpdateObserver.swift; sourceTree = "<group>"; };
+		D4CA706028C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IListenKeyUpdateObserver.swift; sourceTree = "<group>"; };
+		D4CA706428C3C0F7004EEAA2 /* WitSensorKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WitSensorKey.swift; sourceTree = "<group>"; };
+		D4CA706628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWT901BLE5_0DataProcessor.swift; sourceTree = "<group>"; };
+		D4CA706828C3C0F7004EEAA2 /* IDataProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDataProcessor.swift; sourceTree = "<group>"; };
+		D4CA706B28C3C0F7004EEAA2 /* WitCoreConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WitCoreConnector.swift; sourceTree = "<group>"; };
+		D4CA706D28C3C0F7004EEAA2 /* IBluetoothEventObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBluetoothEventObserver.swift; sourceTree = "<group>"; };
+		D4CA706E28C3C0F7004EEAA2 /* BluetoothBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothBLE.swift; sourceTree = "<group>"; };
+		D4CA706F28C3C0F7004EEAA2 /* WitBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WitBluetoothManager.swift; sourceTree = "<group>"; };
+		D4CA707228C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWT901BLE5_0ProtocolResolver.swift; sourceTree = "<group>"; };
+		D4CA707428C3C0F7004EEAA2 /* IProtocolResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IProtocolResolver.swift; sourceTree = "<group>"; };
+		D4CA707628C3C0F7004EEAA2 /* DeviceModelError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModelError.swift; sourceTree = "<group>"; };
+		D4CA707B28C3C0F7004EEAA2 /* Bwt901ble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bwt901ble.swift; sourceTree = "<group>"; };
+		D4CA707C28C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBwt901bleRecordObserver.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CE8FCEE82CE5DE9500E80AF2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			platformFiltersByRelativePath = {
+				BleExampleFROM.swift = (
+					watchos,
+				);
+				BleExampleWatchApp.swift = (
+					watchos,
+				);
+				ContentView.swift = (
+					watchos,
+				);
+			};
+			target = CE0B0FFA2CE4F8C700721A31 /* BleExampleWatch Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CE0B0FFC2CE4F8C700721A31 /* BleExampleWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE8FCEE82CE5DE9500E80AF2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "BleExampleWatch Watch App"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE0B0FF82CE4F8C700721A31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE09BB622CE5E71E00707893 /* WitSDKWatch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE8FCED62CE5DB6800E80AF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4A23C5D2A11E1BF000A3ADF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6F483C2CE5CA5E00CAB4BB /* WitSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CA700328C3BFB2004EEAA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4A23C612A11E1BF000A3ADF /* BleExample */ = {
+			isa = PBXGroup;
+			children = (
+				CE6F48172CE5C5CD00CAB4BB /* Info.plist */,
+				D4A23C622A11E1BF000A3ADF /* BleExampleApp.swift */,
+				D4A23C662A11E1C0000A3ADF /* Assets.xcassets */,
+				D4A23C682A11E1C0000A3ADF /* Preview Content */,
+			);
+			path = BleExample;
+			sourceTree = "<group>";
+		};
+		D4A23C682A11E1C0000A3ADF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D4A23C692A11E1C0000A3ADF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D4CA6FFC28C3BFB2004EEAA2 = {
+			isa = PBXGroup;
+			children = (
+				D4CA700828C3BFB2004EEAA2 /* WitSDK */,
+				D4A23C612A11E1BF000A3ADF /* BleExample */,
+				CE0B0FFC2CE4F8C700721A31 /* BleExampleWatch Watch App */,
+				D4CA70D228C3C718004EEAA2 /* Frameworks */,
+				D4A23C602A11E1BF000A3ADF /* BleExample.app */,
+				CE0B0FFB2CE4F8C700721A31 /* BleExampleWatch Watch App.app */,
+				CE6F47C52CE5823900CAB4BB /* WitSDK.framework */,
+				CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		D4CA700828C3BFB2004EEAA2 /* WitSDK */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA705628C3C0F7004EEAA2 /* Sensor */,
+				D4CA707728C3C0F7004EEAA2 /* WitSensorApi */,
+				D4CA700A28C3BFB2004EEAA2 /* WitSDK.docc */,
+			);
+			path = WitSDK;
+			sourceTree = "<group>";
+		};
+		D4CA705628C3C0F7004EEAA2 /* Sensor */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA705728C3C0F7004EEAA2 /* DeviceModel.swift */,
+				D4CA705828C3C0F7004EEAA2 /* Utils */,
+				D4CA705E28C3C0F7004EEAA2 /* Protocol */,
+				D4CA706128C3C0F7004EEAA2 /* Modular */,
+				D4CA707528C3C0F7004EEAA2 /* Errors */,
+			);
+			path = Sensor;
+			sourceTree = "<group>";
+		};
+		D4CA705828C3C0F7004EEAA2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA705928C3C0F7004EEAA2 /* DipSensorMagHelper.swift */,
+				D4CA705A28C3C0F7004EEAA2 /* StringUtils.swift */,
+				D4CA705B28C3C0F7004EEAA2 /* SyncDictionary.swift */,
+				D4CA705C28C3C0F7004EEAA2 /* DataHelper.swift */,
+				D4CA705D28C3C0F7004EEAA2 /* CompareObjectHelper.swift */,
+				D482727228D4677B00138032 /* DateHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D4CA705E28C3C0F7004EEAA2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA705F28C3C0F7004EEAA2 /* IKeyUpdateObserver.swift */,
+				D4CA706028C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D4CA706128C3C0F7004EEAA2 /* Modular */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706228C3C0F7004EEAA2 /* Processor */,
+				D4CA706928C3C0F7004EEAA2 /* Connector */,
+				D4CA707028C3C0F7004EEAA2 /* Resolver */,
+			);
+			path = Modular;
+			sourceTree = "<group>";
+		};
+		D4CA706228C3C0F7004EEAA2 /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706328C3C0F7004EEAA2 /* Constants */,
+				D4CA706528C3C0F7004EEAA2 /* Roles */,
+				D4CA706728C3C0F7004EEAA2 /* Protocol */,
+			);
+			path = Processor;
+			sourceTree = "<group>";
+		};
+		D4CA706328C3C0F7004EEAA2 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706428C3C0F7004EEAA2 /* WitSensorKey.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		D4CA706528C3C0F7004EEAA2 /* Roles */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift */,
+			);
+			path = Roles;
+			sourceTree = "<group>";
+		};
+		D4CA706728C3C0F7004EEAA2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706828C3C0F7004EEAA2 /* IDataProcessor.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D4CA706928C3C0F7004EEAA2 /* Connector */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706A28C3C0F7004EEAA2 /* Roles */,
+				D4CA706C28C3C0F7004EEAA2 /* Modular */,
+			);
+			path = Connector;
+			sourceTree = "<group>";
+		};
+		D4CA706A28C3C0F7004EEAA2 /* Roles */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706B28C3C0F7004EEAA2 /* WitCoreConnector.swift */,
+			);
+			path = Roles;
+			sourceTree = "<group>";
+		};
+		D4CA706C28C3C0F7004EEAA2 /* Modular */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA706D28C3C0F7004EEAA2 /* IBluetoothEventObserver.swift */,
+				D4CA706E28C3C0F7004EEAA2 /* BluetoothBLE.swift */,
+				D4CA706F28C3C0F7004EEAA2 /* WitBluetoothManager.swift */,
+			);
+			path = Modular;
+			sourceTree = "<group>";
+		};
+		D4CA707028C3C0F7004EEAA2 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707128C3C0F7004EEAA2 /* Roles */,
+				D4CA707328C3C0F7004EEAA2 /* Protocol */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
+		D4CA707128C3C0F7004EEAA2 /* Roles */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707228C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift */,
+			);
+			path = Roles;
+			sourceTree = "<group>";
+		};
+		D4CA707328C3C0F7004EEAA2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707428C3C0F7004EEAA2 /* IProtocolResolver.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D4CA707528C3C0F7004EEAA2 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707628C3C0F7004EEAA2 /* DeviceModelError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		D4CA707728C3C0F7004EEAA2 /* WitSensorApi */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707828C3C0F7004EEAA2 /* Protocol */,
+				D4CA707928C3C0F7004EEAA2 /* Modular */,
+			);
+			path = WitSensorApi;
+			sourceTree = "<group>";
+		};
+		D4CA707828C3C0F7004EEAA2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D4CA707928C3C0F7004EEAA2 /* Modular */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707A28C3C0F7004EEAA2 /* Ble5 */,
+			);
+			path = Modular;
+			sourceTree = "<group>";
+		};
+		D4CA707A28C3C0F7004EEAA2 /* Ble5 */ = {
+			isa = PBXGroup;
+			children = (
+				D4CA707B28C3C0F7004EEAA2 /* Bwt901ble.swift */,
+				D4CA707C28C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift */,
+			);
+			path = Ble5;
+			sourceTree = "<group>";
+		};
+		D4CA70D228C3C718004EEAA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CE8FCEBE2CE5DB6800E80AF2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CA700128C3BFB2004EEAA2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CE0B0FFA2CE4F8C700721A31 /* BleExampleWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE0B10092CE4F8C800721A31 /* Build configuration list for PBXNativeTarget "BleExampleWatch Watch App" */;
+			buildPhases = (
+				CE0B0FF72CE4F8C700721A31 /* Sources */,
+				CE0B0FF82CE4F8C700721A31 /* Frameworks */,
+				CE0B0FF92CE4F8C700721A31 /* Resources */,
+				CE6F484E2CE5D6DC00CAB4BB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE09BB652CE5E71E00707893 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CE0B0FFC2CE4F8C700721A31 /* BleExampleWatch Watch App */,
+			);
+			name = "BleExampleWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "BleExampleWatch Watch App";
+			productReference = CE0B0FFB2CE4F8C700721A31 /* BleExampleWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE8FCEBD2CE5DB6800E80AF2 /* WitSDKWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE8FCED82CE5DB6800E80AF2 /* Build configuration list for PBXNativeTarget "WitSDKWatch" */;
+			buildPhases = (
+				CE8FCEBE2CE5DB6800E80AF2 /* Headers */,
+				CE8FCEBF2CE5DB6800E80AF2 /* Sources */,
+				CE8FCED62CE5DB6800E80AF2 /* Frameworks */,
+				CE8FCED72CE5DB6800E80AF2 /* Resources */,
+			);
+			buildRules = (
+				CE09BB602CE5E43700707893 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = WitSDKWatch;
+			productName = WitSDK;
+			productReference = CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D4A23C5F2A11E1BF000A3ADF /* BleExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4A23C812A11E1C0000A3ADF /* Build configuration list for PBXNativeTarget "BleExample" */;
+			buildPhases = (
+				D4A23C5C2A11E1BF000A3ADF /* Sources */,
+				D4A23C5D2A11E1BF000A3ADF /* Frameworks */,
+				D4A23C5E2A11E1BF000A3ADF /* Resources */,
+				D46CD30D2A1637FD001465E8 /* Embed Frameworks */,
+				CE0B100C2CE4F8C800721A31 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE8FCEBC2CE5DB3A00E80AF2 /* PBXTargetDependency */,
+			);
+			name = BleExample;
+			productName = BleExample;
+			productReference = D4A23C602A11E1BF000A3ADF /* BleExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D4CA700528C3BFB2004EEAA2 /* WitSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4CA701A28C3BFB2004EEAA2 /* Build configuration list for PBXNativeTarget "WitSDK" */;
+			buildPhases = (
+				D4CA700128C3BFB2004EEAA2 /* Headers */,
+				D4CA700228C3BFB2004EEAA2 /* Sources */,
+				D4CA700328C3BFB2004EEAA2 /* Frameworks */,
+				D4CA700428C3BFB2004EEAA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WitSDK;
+			productName = WitSDK;
+			productReference = CE6F47C52CE5823900CAB4BB /* WitSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4CA6FFD28C3BFB2004EEAA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					CE0B0FFA2CE4F8C700721A31 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					D4A23C5F2A11E1BF000A3ADF = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					D4CA700528C3BFB2004EEAA2 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = D4CA700028C3BFB2004EEAA2 /* Build configuration list for PBXProject "WitSDK" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D4CA6FFC28C3BFB2004EEAA2;
+			productRefGroup = D4CA6FFC28C3BFB2004EEAA2;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4CA700528C3BFB2004EEAA2 /* WitSDK */,
+				D4A23C5F2A11E1BF000A3ADF /* BleExample */,
+				CE0B0FFA2CE4F8C700721A31 /* BleExampleWatch Watch App */,
+				CE8FCEBD2CE5DB6800E80AF2 /* WitSDKWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE0B0FF92CE4F8C700721A31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE8FCED72CE5DB6800E80AF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4A23C5E2A11E1BF000A3ADF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4A23C6A2A11E1C0000A3ADF /* Preview Assets.xcassets in Resources */,
+				D4A23C672A11E1C0000A3ADF /* Assets.xcassets in Resources */,
+				CE09BB5E2CE5E2A900707893 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CA700428C3BFB2004EEAA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE0B0FF72CE4F8C700721A31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE8FCEBF2CE5DB6800E80AF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE8FCEC02CE5DB6800E80AF2 /* Bwt901ble.swift in Sources */,
+				CE8FCEC12CE5DB6800E80AF2 /* IKeyUpdateObserver.swift in Sources */,
+				CE8FCEC22CE5DB6800E80AF2 /* StringUtils.swift in Sources */,
+				CE8FCEC32CE5DB6800E80AF2 /* BWT901BLE5_0DataProcessor.swift in Sources */,
+				CE8FCEC42CE5DB6800E80AF2 /* WitCoreConnector.swift in Sources */,
+				CE8FCEC52CE5DB6800E80AF2 /* IBwt901bleRecordObserver.swift in Sources */,
+				CE8FCEC62CE5DB6800E80AF2 /* IListenKeyUpdateObserver.swift in Sources */,
+				CE8FCEC72CE5DB6800E80AF2 /* IBluetoothEventObserver.swift in Sources */,
+				CE8FCEC82CE5DB6800E80AF2 /* CompareObjectHelper.swift in Sources */,
+				CE8FCEC92CE5DB6800E80AF2 /* DateHelper.swift in Sources */,
+				CE8FCECA2CE5DB6800E80AF2 /* BWT901BLE5_0ProtocolResolver.swift in Sources */,
+				CE8FCECB2CE5DB6800E80AF2 /* WitSDK.docc in Sources */,
+				CE8FCECC2CE5DB6800E80AF2 /* DipSensorMagHelper.swift in Sources */,
+				CE8FCECD2CE5DB6800E80AF2 /* WitBluetoothManager.swift in Sources */,
+				CE8FCECE2CE5DB6800E80AF2 /* DataHelper.swift in Sources */,
+				CE8FCECF2CE5DB6800E80AF2 /* DeviceModel.swift in Sources */,
+				CE8FCED02CE5DB6800E80AF2 /* DeviceModelError.swift in Sources */,
+				CE8FCED12CE5DB6800E80AF2 /* WitSensorKey.swift in Sources */,
+				CE8FCED22CE5DB6800E80AF2 /* BluetoothBLE.swift in Sources */,
+				CE8FCED32CE5DB6800E80AF2 /* IDataProcessor.swift in Sources */,
+				CE8FCED42CE5DB6800E80AF2 /* SyncDictionary.swift in Sources */,
+				CE8FCED52CE5DB6800E80AF2 /* IProtocolResolver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4A23C5C2A11E1BF000A3ADF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4A23C632A11E1BF000A3ADF /* BleExampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CA700228C3BFB2004EEAA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4CA708F28C3C0F7004EEAA2 /* Bwt901ble.swift in Sources */,
+				D4CA708328C3C0F7004EEAA2 /* IKeyUpdateObserver.swift in Sources */,
+				D4CA707F28C3C0F7004EEAA2 /* StringUtils.swift in Sources */,
+				D4CA708628C3C0F7004EEAA2 /* BWT901BLE5_0DataProcessor.swift in Sources */,
+				D4CA708828C3C0F7004EEAA2 /* WitCoreConnector.swift in Sources */,
+				D4CA709028C3C0F7004EEAA2 /* IBwt901bleRecordObserver.swift in Sources */,
+				D4CA708428C3C0F7004EEAA2 /* IListenKeyUpdateObserver.swift in Sources */,
+				D4CA708928C3C0F7004EEAA2 /* IBluetoothEventObserver.swift in Sources */,
+				D4CA708228C3C0F7004EEAA2 /* CompareObjectHelper.swift in Sources */,
+				D482727328D4677B00138032 /* DateHelper.swift in Sources */,
+				D4CA708C28C3C0F7004EEAA2 /* BWT901BLE5_0ProtocolResolver.swift in Sources */,
+				D4CA700B28C3BFB2004EEAA2 /* WitSDK.docc in Sources */,
+				D4CA707E28C3C0F7004EEAA2 /* DipSensorMagHelper.swift in Sources */,
+				D4CA708B28C3C0F7004EEAA2 /* WitBluetoothManager.swift in Sources */,
+				D4CA708128C3C0F7004EEAA2 /* DataHelper.swift in Sources */,
+				D4CA708E28C3C0F7004EEAA2 /* DeviceModelError.swift in Sources */,
+				D4CA708528C3C0F7004EEAA2 /* WitSensorKey.swift in Sources */,
+				D4CA708A28C3C0F7004EEAA2 /* BluetoothBLE.swift in Sources */,
+				D4CA708728C3C0F7004EEAA2 /* IDataProcessor.swift in Sources */,
+				CE8FCEE72CE5DDE200E80AF2 /* DeviceModel.swift in Sources */,
+				D4CA708028C3C0F7004EEAA2 /* SyncDictionary.swift in Sources */,
+				D4CA708D28C3C0F7004EEAA2 /* IProtocolResolver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE09BB652CE5E71E00707893 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE8FCEBD2CE5DB6800E80AF2 /* WitSDKWatch */;
+			targetProxy = CE09BB642CE5E71E00707893 /* PBXContainerItemProxy */;
+		};
+		CE8FCEBC2CE5DB3A00E80AF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4CA700528C3BFB2004EEAA2 /* WitSDK */;
+			targetProxy = CE8FCEBB2CE5DB3A00E80AF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CE0B100A2CE4F8C800721A31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"BleExampleWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BleExampleWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BleExampleWatch;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.giwoo.witmotion.BleExample;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.BleExample.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		CE0B100B2CE4F8C800721A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_ASSET_PATHS = "\"BleExampleWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BleExampleWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BleExampleWatch;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.giwoo.witmotion.BleExample;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.BleExample.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		CE8FCED92CE5DB6800E80AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_MODULE_VERIFIER = NO;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_NSHumanReadableCopyright = Yes;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				MARKETPLACES = Yes;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.WitSDKWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = watchos;
+				"SDKROOT[arch=*]" = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				VALID_ARCHS = "arm64 arm64e arm64_32";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Debug;
+		};
+		CE8FCEDA2CE5DB6800E80AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALTERNATIVE_DISTRIBUTION_WEB = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=driverkit*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_MODULE_VERIFIER = NO;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = Yes;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_NSHumanReadableCopyright = Yes;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				MARKETPLACES = Yes;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.WitSDKWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = watchos;
+				"SDKROOT[arch=*]" = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				VALID_ARCHS = "arm64 arm64e arm64_32";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Release;
+		};
+		D4A23C822A11E1C0000A3ADF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BleExample/Preview Content\"";
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BleExample/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.BleExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4A23C832A11E1C0000A3ADF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BleExample/Preview Content\"";
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BleExample/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.BleExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D4CA701828C3BFB2004EEAA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = NO;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_COMMA = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = NO;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = NO;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CLANG_WARN_SUSPICIOUS_MOVE = NO;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		D4CA701928C3BFB2004EEAA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = NO;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_COMMA = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = NO;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INFINITE_RECURSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = NO;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = NO;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CLANG_WARN_SUSPICIOUS_MOVE = NO;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		D4CA701B28C3BFB2004EEAA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_MODULE_VERIFIER = YES;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_NSHumanReadableCopyright = Yes;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.WitSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = iphoneos;
+				"SDKROOT[arch=*]" = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				VALID_ARCHS = "arm64 arm64e arm64_32";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Debug;
+		};
+		D4CA701C28C3BFB2004EEAA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=driverkit*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TB9MFLQJ6C;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_MODULE_VERIFIER = YES;
+				EXCLUDED_ARCHS = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = YES;
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = Yes;
+				INFOPLIST_KEY_NSHumanReadableCopyright = Yes;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++17";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giwoo.witmotion.WitSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = iphoneos;
+				"SDKROOT[arch=*]" = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TVOS_DEPLOYMENT_TARGET = 16.6;
+				VALID_ARCHS = "arm64 arm64e arm64_32";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				XROS_DEPLOYMENT_TARGET = 1.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE0B10092CE4F8C800721A31 /* Build configuration list for PBXNativeTarget "BleExampleWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE0B100A2CE4F8C800721A31 /* Debug */,
+				CE0B100B2CE4F8C800721A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE8FCED82CE5DB6800E80AF2 /* Build configuration list for PBXNativeTarget "WitSDKWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE8FCED92CE5DB6800E80AF2 /* Debug */,
+				CE8FCEDA2CE5DB6800E80AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4A23C812A11E1C0000A3ADF /* Build configuration list for PBXNativeTarget "BleExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4A23C822A11E1C0000A3ADF /* Debug */,
+				D4A23C832A11E1C0000A3ADF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4CA700028C3BFB2004EEAA2 /* Build configuration list for PBXProject "WitSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4CA701828C3BFB2004EEAA2 /* Debug */,
+				D4CA701928C3BFB2004EEAA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4CA701A28C3BFB2004EEAA2 /* Build configuration list for PBXNativeTarget "WitSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4CA701B28C3BFB2004EEAA2 /* Debug */,
+				D4CA701C28C3BFB2004EEAA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4CA6FFD28C3BFB2004EEAA2 /* Project object */;
+}
