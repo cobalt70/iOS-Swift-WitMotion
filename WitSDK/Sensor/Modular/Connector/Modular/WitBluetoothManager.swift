@@ -81,7 +81,7 @@ public class WitBluetoothManager:NSObject {
         }
     }
     
-    // MARK: 取消连接
+    // MARK: - Cancel Connection
     func cancelConnect(_ model:CBPeripheral) {
         if (model.state == CBPeripheralState.connected) {
             central?.cancelPeripheralConnection(model)
@@ -180,7 +180,7 @@ extension WitBluetoothManager : CBCentralManagerDelegate{
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        //  在这个地方可以判读是不是自己本公司的设备,这个是根据设备的名称过滤的
+        //you can determine if it is your company's device based on the device's name here."
         guard peripheral.name != nil , peripheral.name!.contains("WT") else {
             return
         }

@@ -9,30 +9,32 @@ import CoreBluetooth
 
 public class BluetoothBLE:NSObject{
     
-    // 服务uuid
-    var uuidService:String?
-    
-    // 发送特征值uuid
-    var uuidSend:String?
-    
-    // 读取特征值uuid
-    var uuidRead:String?
-    
-    // 蓝牙管理器
+    // Service UUID
+    var uuidService: String?
+
+    // UUID for sending characteristics
+    var uuidSend: String?
+
+    // UUID for reading characteristics
+    var uuidRead: String?
+
+    // Bluetooth manager
     @MainActor
-    var bluetoothManager:WitBluetoothManager = WitBluetoothManager.instance
-    
-    // 当前连接的设备
-    public var peripheral:CBPeripheral!
-    
-    //发送数据特征(连接到设备之后可以把需要用到的特征保存起来，方便使用)
-    var sendCharacteristic:CBCharacteristic?
-    
-    // 数据接收接口
-    var dataReceivedList:[IDataReceivedObserver] = [IDataReceivedObserver]()
-    
-    // 设备地址
-    public var mac:String?
+    var bluetoothManager: WitBluetoothManager = WitBluetoothManager.instance
+
+    // Currently connected device
+    public var peripheral: CBPeripheral!
+
+    // Characteristic for sending data (Save the required characteristic after connecting to the device for convenience)
+    var sendCharacteristic: CBCharacteristic?
+
+    // Data reception interface
+    var dataReceivedList: [IDataReceivedObserver] = [IDataReceivedObserver]()
+
+    // Device address
+    public var mac: String?
+
+   
     
     init(_ peripheral:CBPeripheral){
         super.init()
@@ -56,15 +58,16 @@ public class BluetoothBLE:NSObject{
         bluetoothManager.cancelConnect(self.peripheral)
     }
     
-    // MARK: 发送数据
+    // MARK: Send Data
     func sendData(_ data: Data) {
 
-        // 非连接中则不发送
+        // Do not send if not connected
+
         if (peripheral.state != .connected) {
             return
         }
         
-        // 没有发送特征也不发送
+        // Do not send if there is no send characteristic
         if (sendCharacteristic == nil) {
             return
         }
@@ -72,28 +75,28 @@ public class BluetoothBLE:NSObject{
         peripheral.writeValue(data , for: sendCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
     }
     
-    // MARK: 发送数据
+    // MARK: Send Data
     func sendData (_ data:[UInt8]){
         sendData(Data(data))
     }
 }
 
-// 调用数据接收事件
+// Trigger data reception events
 extension BluetoothBLE : IDataObserved{
     
-    // MARK: 调用需要接收数据的对象
+    // MARK: Invoke objects to receive data
     func invokeDataRecevied(data:[UInt8]){
         for item in dataReceivedList {
             item.onDataReceived(data: data)
         }
     }
     
-    // MARK: 注册数据接收对象
+    // MARK: Register objects to receive data
     func registerDataRecevied(obj:IDataReceivedObserver){
         self.dataReceivedList.append(obj)
     }
     
-    // MARK: 移除数据接收对象
+    // MARK: Remove objects from receiving data
     func removeDataRecevied(obj:IDataReceivedObserver){
         var i = 0
         while i < self.dataReceivedList.count {
@@ -199,17 +202,16 @@ extension BluetoothBLE : CBPeripheralDelegate {
         switch characteristic.uuid.uuidString.uppercased() {
             
         case self.uuidRead:
-//            // 打印收到数据的时间戳
-//            let dformatter = DateFormatter()
-//            dformatter.dateFormat = "yyyyMMdd-HH.mm.ss"
-//            let current = Date()
-//            let dateString = dformatter.string(from: current) + ".\((CLongLong(round(current.timeIntervalSince1970*1000)) % 1000))"
+           // Print the timestamp of the received data
+            let dformatter = DateFormatter()
+            dformatter.dateFormat = "yyyyMMdd-HH.mm.ss"
+            let current = Date()
+            let dateString = dformatter.string(from: current) + ".\((CLongLong(round(current.timeIntervalSince1970*1000)) % 1000))"
 //            print(dateString)
-            
-            // print("接收到了设备的数据: \(String(describing: characteristic.value?.dataToHex()))")
+//             print("Received data from the device \(String(describing: characteristic.value?.dataToHex()))")
             let bytes:[UInt8]? = characteristic.value?.dataToBytes()
             if bytes != nil {
-                // 调用要接收数据的对象
+                // Call the object to receive data"
                 invokeDataRecevied(data: bytes ?? [UInt8]())
             }
             break

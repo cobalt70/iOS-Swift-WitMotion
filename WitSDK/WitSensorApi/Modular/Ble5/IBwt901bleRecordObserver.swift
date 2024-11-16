@@ -8,7 +8,7 @@ import Foundation
 
 public protocol IBwt901bleRecordObserver {
     
-    // 记录数据事件
+    //Record data events
     func onRecord(_ bwt901ble:Bwt901ble)
     
 }

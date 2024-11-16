@@ -33,6 +33,7 @@
 		CE8FCED42CE5DB6800E80AF2 /* SyncDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705B28C3C0F7004EEAA2 /* SyncDictionary.swift */; platformFilters = (watchos, ); };
 		CE8FCED52CE5DB6800E80AF2 /* IProtocolResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA707428C3C0F7004EEAA2 /* IProtocolResolver.swift */; platformFilters = (watchos, ); };
 		CE8FCEE72CE5DDE200E80AF2 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CA705728C3C0F7004EEAA2 /* DeviceModel.swift */; platformFilter = ios; };
+		CEA28F512CE855760058CC69 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = CEA28F502CE855760058CC69 /* File.txt */; };
 		CEE1D4442CE6147F00E946EC /* WitSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE6F47C52CE5823900CAB4BB /* WitSDK.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D482727328D4677B00138032 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482727228D4677B00138032 /* DateHelper.swift */; platformFilter = ios; };
 		D4A23C632A11E1BF000A3ADF /* BleExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A23C622A11E1BF000A3ADF /* BleExampleApp.swift */; platformFilter = ios; };
@@ -131,6 +132,7 @@
 		CE6F47C52CE5823900CAB4BB /* WitSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WitSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6F48172CE5C5CD00CAB4BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WitSDKWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA28F502CE855760058CC69 /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		D482727228D4677B00138032 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		D4A23C602A11E1BF000A3ADF /* BleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A23C622A11E1BF000A3ADF /* BleExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleExampleApp.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				CE0B0FFB2CE4F8C700721A31 /* BleExampleWatch Watch App.app */,
 				CE6F47C52CE5823900CAB4BB /* WitSDK.framework */,
 				CE8FCEDB2CE5DB6800E80AF2 /* WitSDKWatch.framework */,
+				CEA28F502CE855760058CC69 /* File.txt */,
 			);
 			sourceTree = "<group>";
 		};
@@ -584,6 +587,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA28F512CE855760058CC69 /* File.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

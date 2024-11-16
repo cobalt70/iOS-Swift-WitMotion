@@ -357,6 +357,10 @@ struct HomeView: View {
     
     // App context
     @ObservedObject var viewModel: AppContext
+    let columns = [
+           GridItem(.flexible()), // 첫 번째 열
+           GridItem(.flexible())  // 두 번째 열
+       ]
     
     // MARK: Constructor
     init(_ viewModel: AppContext) {
@@ -368,39 +372,39 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             VStack(alignment: .center){
-                HStack {
-                    Text("Control device")
-                        .font(.title)
-                }
-                HStack{
-                    VStack{
-                        Button("Acc cali") {
-                            viewModel.appliedCalibration()
-                        }.padding(10)
-                        Button("Start mag cali"){
-                            viewModel.startFieldCalibration()
-                        }.padding(10)
-                        Button("Stop mag cali"){
-                            viewModel.endFieldCalibration()
-                        }.padding(10)
-                    }
-                    VStack{
-                        Button("Read 03 reg"){
-                            viewModel.readReg03()
-                        }.padding(10)
-                        Button("Set 50hz rate"){
-                            viewModel.setBackRate50hz()
-                        }.padding(10)
-                        Button("Set 10hz rate"){
-                            viewModel.setBackRate10hz()
-                        }.padding(10)
-                    }
-                }
-                
-                HStack {
-                    Text("Device data")
-                        .font(.title)
-                }
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 2) {
+                            Button("Acc cali") {
+                                viewModel.appliedCalibration()
+                            }
+                            .buttonStyle()
+                            
+                            Button("Start mag cali") {
+                                viewModel.startFieldCalibration()
+                            }
+                            .buttonStyle()
+                            
+                            Button("Stop mag cali") {
+                                viewModel.endFieldCalibration()
+                            }
+                            .buttonStyle()
+                            
+                            Button("Read reg") {
+                                viewModel.readReg03()
+                            }
+                            .buttonStyle()
+                            
+                            Button("Set 50hz") {
+                                viewModel.setBackRate50hz()
+                            }
+                            .buttonStyle()
+                            
+                            Button("Set 10hz") {
+                                viewModel.setBackRate10hz()
+                            }
+                            .buttonStyle()
+                        }
+                        .padding(20) // 전체 여백 설정
+                    
                 ScrollViewReader { proxy in
                     List{
                         Text(self.viewModel.deviceData)
@@ -503,5 +507,17 @@ struct Bwt901bleView: View{
             }
             .padding(10)
         }
+    }
+}
+
+
+extension Button {
+    func buttonStyle() -> some View {
+        self
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 50) // 버튼 크기 균일화
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
     }
 }

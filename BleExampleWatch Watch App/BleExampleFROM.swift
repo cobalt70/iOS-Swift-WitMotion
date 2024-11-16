@@ -9,26 +9,28 @@
 import SwiftUI
 import CoreBluetooth
 import WitSDKWatch
-
+import simd
 
 
 class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObserver{
     
-    // 获得蓝牙管理器
+    static let shared = AppContext()
     // Get bluetooth manager
     let bluetoothManager:WitBluetoothManager = WitBluetoothManager.instance 
     
-    // 是否扫描设备中
+   
     // Whether to scan the device
     @Published var enableScan = false
-    
-    // 蓝牙5.0传感器对象
+  
     // Bluetooth 5.0 sensor object
     @Published var deviceList:[Bwt901ble] = []
     
-    // 要显示的设备数据
+ 
     // Device data to display
     @Published var deviceData: String = "device not connected"
+    @Published var angles = SIMD3<Float>(x: 0.0, y: 0, z: 0)
+    @Published var isBlueToothConnected: Bool = false
+    @Published var compassBias: Double = 0.0
     
     init(){
        
@@ -111,9 +113,10 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
         
         do {
             try bwt901ble?.openDevice()
-         
+          
             // Monitor data
             bwt901ble?.registerListenKeyUpdateObserver(obj: self)
+            isBlueToothConnected = true
         }
         catch{
             print("Failed to open device")
@@ -123,6 +126,8 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     // MARK: Remove all devices
     @MainActor func removeAllDevice(){
         print("device List in the removeAllDevice: \(deviceList)")
+        
+        isBlueToothConnected = false
         for item in deviceList {
             print("device in the removeAllDevice: \(item)")
             closeDevice(bwt901ble: item)
@@ -135,7 +140,9 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     // MARK: Turn off the device
     @MainActor func closeDevice(bwt901ble: Bwt901ble?){
         print("Turn off the device")
+        isBlueToothConnected = false
         bwt901ble?.closeDevice()
+      
     }
     
     
@@ -144,7 +151,7 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
        
         let deviceData =  getDeviceDataToString(bwt901ble)
         
-        // 打印到控制台,您也可以在这里把数据记录到您的文件中  Prints to the console, where you can also log the data to your file
+        //Prints to the console, where you can also log the data to your file
         print("onRecrod: \(deviceData)")
     }
     
@@ -157,7 +164,6 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
                             object: nil)
         thread.start()
     }
-    
     
     // MARK: Refresh the view thread, which will refresh the sensor data displayed on the page here
     @objc func refreshView (){
@@ -177,12 +183,10 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
               
                     // Get the data of the device and concatenate it into a string
                     let deviceData =  getDeviceDataToString(device)
-                    tmpDeviceData = "\(tmpDeviceData)\r\n\(deviceData)"
+                    tmpDeviceData = "\(tmpDeviceData)n\(deviceData)"
                     print("tempDeviceData \(tmpDeviceData)")
                 }
             }
-            
-          
             // Refresh ui
             DispatchQueue.main.async {
                 self.deviceData = tmpDeviceData
@@ -195,25 +199,30 @@ class AppContext: ObservableObject ,IBluetoothEventObserver, IBwt901bleRecordObs
     // MARK: Get the data of the device and concatenate it into a string
     func getDeviceDataToString(_ device:Bwt901ble) -> String {
         var s = ""
-        s  = "\(s)name:\(device.name ?? "")\r\n"
-        s  = "\(s)mac:\(device.mac ?? "")\r\n"
-        s  = "\(s)version:\(device.getDeviceData(WitSensorKey.VersionNumber) ?? "")\r\n"
-        s  = "\(s)AX:\(device.getDeviceData(WitSensorKey.AccX) ?? "") g\r\n"
-        s  = "\(s)AY:\(device.getDeviceData(WitSensorKey.AccY) ?? "") g\r\n"
-        s  = "\(s)AZ:\(device.getDeviceData(WitSensorKey.AccZ) ?? "") g\r\n"
-        s  = "\(s)GX:\(device.getDeviceData(WitSensorKey.GyroX) ?? "") °/s\r\n"
-        s  = "\(s)GY:\(device.getDeviceData(WitSensorKey.GyroY) ?? "") °/s\r\n"
-        s  = "\(s)GZ:\(device.getDeviceData(WitSensorKey.GyroZ) ?? "") °/s\r\n"
-        s  = "\(s)AngX:\(device.getDeviceData(WitSensorKey.AngleX) ?? "") °\r\n"
-        s  = "\(s)AngY:\(device.getDeviceData(WitSensorKey.AngleY) ?? "") °\r\n"
-        s  = "\(s)AngZ:\(device.getDeviceData(WitSensorKey.AngleZ) ?? "") °\r\n"
-        s  = "\(s)HX:\(device.getDeviceData(WitSensorKey.MagX) ?? "") μt\r\n"
-        s  = "\(s)HY:\(device.getDeviceData(WitSensorKey.MagY) ?? "") μt\r\n"
-        s  = "\(s)HZ:\(device.getDeviceData(WitSensorKey.MagZ) ?? "") μt\r\n"
-        s  = "\(s)Electric:\(device.getDeviceData(WitSensorKey.ElectricQuantityPercentage) ?? "") %\r\n"
-        s  = "\(s)Temp:\(device.getDeviceData(WitSensorKey.Temperature) ?? "") °C\r\n"
+        
+        s  = "\(s)name:\(device.name ?? "")\n"
+        s  = "\(s)mac:\(device.mac ?? "")\n"
+     
+        s  = "\(s)AngX:\(device.getDeviceData(WitSensorKey.AngleX) ?? "") °\n"
+        s  = "\(s)AngY:\(device.getDeviceData(WitSensorKey.AngleY) ?? "") °\n"
+        s  = "\(s)AngZ:\(device.getDeviceData(WitSensorKey.AngleZ) ?? "") °\n"
+
+        getDeviceAngleData(device)
         return s
     }
+    
+    func getDeviceAngleData(_ device:Bwt901ble) {
+        var s = ""
+        s  = "\(s)name:\(device.name ?? "")\n"
+        s  = "\(s)mac:\(device.mac ?? "")\n"
+        DispatchQueue.main.async {
+            self.angles.x = Float(device.getDeviceData(WitSensorKey.AngleX) ?? "") ?? 0.0
+            self.angles.y = Float(device.getDeviceData(WitSensorKey.AngleY) ?? "") ?? 0.0
+            self.angles.z = Float(device.getDeviceData(WitSensorKey.AngleZ) ?? "") ?? 0.0
+        }
+        
+    }
+    
     
     
     // MARK: Addition calibration
@@ -384,24 +393,20 @@ struct HomeView: View {
                     Text("Device data")
                         .font(Font.system(size: 10))
                 }
-                
-                
-                Text(self.viewModel.deviceData)
-                    .fontWeight(.light)
-                    .font(.body)
-                
-                
-            }
+                Text(String(format: "%.f", self.viewModel.angles.x))
+                Text(String(format: "%.f", self.viewModel.angles.y))
+                Text(String(format: "%.f", self.viewModel.angles.z))
+            }.font(Font.system(size: 12))
         }.navigationBarHidden(true)
     }
 }
 
-//
-//struct Home_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}
+
+struct Home_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
+}
 
 
 // **********************************************************
@@ -420,7 +425,7 @@ struct ConnectView: View {
         ZStack(alignment: .leading) {
             VStack{
                 Toggle(isOn: $viewModel.enableScan){
-                    Text("Turn on :")
+                    Text("Turn on device scanning :")
                 }.onChange(of: viewModel.enableScan) {_, value in
                     if value {
                         viewModel.scanDevices()
@@ -433,11 +438,9 @@ struct ConnectView: View {
                     
                     ForEach (self.viewModel.deviceList) { device in
                         Bwt901bleView(device, viewModel)
+                        
                     }
                     .onAppear {
-                        print(" list: \(self.viewModel.deviceList) count:  \(self.viewModel.deviceList.count)")
-                    }
-                    .onChange(of:self.viewModel.deviceList.count) {
                         print(" list: \(self.viewModel.deviceList) count:  \(self.viewModel.deviceList.count)")
                     }
                     
@@ -449,12 +452,12 @@ struct ConnectView: View {
 }
 
 
-//struct ConnectView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ConnectView()
-//          
-//    }
-//}
+struct ConnectView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConnectView()
+          
+    }
+}
 
 // **********************************************************
 

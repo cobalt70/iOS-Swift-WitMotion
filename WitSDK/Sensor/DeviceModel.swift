@@ -66,73 +66,73 @@ public class DeviceModel {
 // 打开设备和关闭设操作
 extension DeviceModel{
     
-    // MARK: 设置连接对象
+    // MARK: Set connection object
     func setCoreConnector(coreConnector:WitCoreConnector){
         self.coreConnect = coreConnector
     }
     
-    // MARK: 打开设备
+    // MARK: Open device
     @MainActor func openDevice() throws{
         
         if (coreConnect != nil) {
-            // 打开连接器
+            // Open connector
             try coreConnect?.open()
             coreConnect?.registerDataRecevied(obj: self)
             
-            // 调用数据处理打开方法
+            // Call the data processing open method
             dataProcessor.onOpen(deviceModel: self)
             
         }else{
-            throw DeviceModelError.openError(msaage: "打开设备错误,没有连接对象")
+            throw DeviceModelError.openError(msaage:"Failed to open device, no connection object" )
         }
         
     }
     
-    // MARK: 重新打开
+    // MARK: Reopen
     @MainActor func reOpen() throws{
         self.closeDevice()
         try self.openDevice()
     }
     
-    // MARK: 关闭设备
+    // MARK: Close device
     @MainActor func closeDevice(){
-        // 调用数据处理关闭方法
+        // Call the data processing close method
         dataProcessor.onClose()
-        // 关闭连接器
+        // Close connector
         coreConnect?.close()
         coreConnect?.removeDataRecevied(obj: self)
     }
 }
 
-// 设备数据操作
+// Device data operations
 extension DeviceModel{
     
-    // MARK: 设置数据
+    // MARK: Set data
     func setDeviceData(_ key:String,_ value:String){
         
         deviceDataLock.lock()
         deviceData[key] = value
         deviceDataLock.unlock()
         
-        // 触发监听的key值
+        // Trigger the listener's key value
         if key == listenerKey {
-            // 调用数据处理器更新数据
+            // Call the data processor to update data
             dataProcessor.onUpdate(deviceModel: self)
-            // 调用key更新观察者
+            // Call the key to update the observer
             invokeListenKeyUpdateObserver(self)
         }
         
-        // 调用监听key更新观察者
+        // Call the listener key to update the observer
         invokeKeyUpdateObserver(self, key, value)
     }
     
-    // MARK: 获得设备数据
+    // MARK: Get device data
     func getDeviceData(_ key:String) -> String?{
         
         var value:String? = nil
         
         deviceDataLock.lock()
-        // 如果不包含就返回空
+        // Return nil if not contained
         if deviceData.keys.contains(key) {
             value = deviceData[key]
         }
@@ -144,19 +144,19 @@ extension DeviceModel{
 }
 
 
-// 收到数据时
+// When data is received
 extension DeviceModel:IDataReceivedObserver{
-    // MARK: 当收到设备的数据时
+    // MARK: When receiving data from the device
     func onDataReceived(data: [UInt8]) {
         
-        // 如果在等待返回
+        // If waiting for a return
         if (bolWaitReturn) {
             //returnDataBufferLock.lock()
             returnDataBuffer.append(contentsOf: data)
             //returnDataBufferLock.unlock()
         }
         
-        // MARK: 调用协议处理器
+        // MARK: Call protocol handler
         protocolResolver.passiveReceiveData(data: data, deviceModel: self)
     }
 }
@@ -203,9 +203,11 @@ extension DeviceModel {
         try sendData(data: data)
     }
     
-    // MARK: 发送协议数据 (异步)
+    // MARK: Send protocol data (asynchronous)
+
     func asyncSendProtocolData(_ data: [UInt8],_ waitTime:Int64,_ callback:@escaping () -> Void) throws{
-        // 启动一个线程
+        // Start a thread
+
         let thread = Thread(block: {
             do{
                 try self.sendProtocolData(data, waitTime)
@@ -219,22 +221,25 @@ extension DeviceModel {
 }
 
 
-// 事件处理
+// Event handling
+
 extension DeviceModel {
     
-    // MARK: 调用key更新观察者
+    // MARK: Invoke key update observer
+
     func invokeKeyUpdateObserver(_ deviceModel:DeviceModel, _ key:String,_ value:String){
         for item in self.keyUpdateObserverList {
             item.onKeyUpdate(deviceModel, key, value)
         }
     }
     
-    // MARK: 注册key更新观察者
+    // MARK: Register key update observer
+
     func registerKeyUpdateObserver(_ obj:IKeyUpdateObserver){
         self.keyUpdateObserverList.append(obj)
     }
     
-    // MARK: 移除key更新观察者
+    // MARK: Remove key update observer
     func removeKeyUpdateObserver(_ obj:IKeyUpdateObserver){
         var i = 0
         while i < self.keyUpdateObserverList.count {
@@ -247,19 +252,22 @@ extension DeviceModel {
         }
     }
     
-    // MARK: 调用监听key更新观察者
+    // MARK: Invoke listener for key update observer
+
     func invokeListenKeyUpdateObserver(_ deviceModel:DeviceModel){
         for item in self.listenKeyUpdateObserverList {
             item.onListenKeyUpdate(deviceModel)
         }
     }
     
-    // MARK: 注册监听key更新观察者
+    // MARK: Register listener for key update observer
+
     func registerListenKeyUpdateObserver(obj:IListenKeyUpdateObserver){
         self.listenKeyUpdateObserverList.append(obj)
     }
     
-    // MARK: 移除监听key更新观察者
+    // MARK: Remove listener for key update observer
+
     func removeListenKeyUpdateObserver(obj:IListenKeyUpdateObserver){
         var i = 0
         while i < self.listenKeyUpdateObserverList.count {

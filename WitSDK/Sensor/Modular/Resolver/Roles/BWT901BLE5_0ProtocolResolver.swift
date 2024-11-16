@@ -8,16 +8,16 @@ import Foundation
 
 class BWT901BLE5_0ProtocolResolver : IProtocolResolver {
     
-    // 要解析的数据
+    // data to be parsed
     var activeByteDataBuffer:[UInt8] = [UInt8]()
     
-    // 临时Byte
+    // Temporary byte array used for processing
     var activeByteTemp:[UInt8] = [UInt8]()
     
-    // 发送数据
+    // send data
     func sendData(sendData: [UInt8], deviceModel: DeviceModel, waitTime: Int64) throws{
         
-        // 回掉方法
+        //callback method
         let callback:(_ rtnData:[UInt8]) -> Void = { rtnBytes in
             
             if sendData[3] == 0x03 {
@@ -45,14 +45,14 @@ class BWT901BLE5_0ProtocolResolver : IProtocolResolver {
             }
             
         }
-        // 发送数据
+        // Function to send data
        try deviceModel.sendData(data: sendData,callback: callback, waitTime: waitTime)
         
     }
     
     
     /**
-     * 查找传感器返回的值
+     * find the value returned by the sensor
      *
      * @author huangyajun
      * @date 2022/5/23 14:17
@@ -69,7 +69,7 @@ class BWT901BLE5_0ProtocolResolver : IProtocolResolver {
     }
     
     
-    // 解算实时数据
+    // calculate real-time data
     func passiveReceiveData(data: [UInt8], deviceModel: DeviceModel) {
         
         if (data.count < 1) {
@@ -79,7 +79,7 @@ class BWT901BLE5_0ProtocolResolver : IProtocolResolver {
         
         activeByteDataBuffer.append(contentsOf: data)
         
-        // 移除非法数据
+        // remove invalid data
         while (activeByteDataBuffer.count > 0
                && activeByteDataBuffer[0] != 0x55
                && (activeByteDataBuffer[1] != 0x61 || activeByteDataBuffer[1] != 0x71)) {
@@ -90,7 +90,8 @@ class BWT901BLE5_0ProtocolResolver : IProtocolResolver {
             activeByteTemp = activeByteDataBuffer[0..<20].reversed()
             activeByteDataBuffer = activeByteDataBuffer[20..<activeByteDataBuffer.count].reversed()
             
-            // 必须是55 61的数据包
+            // The packet must be 55 61
+            
             if (activeByteTemp[0] == 0x55 && activeByteTemp[1] == 0x61) {
                 var fData:[Int16] = [Int16](repeating: 0, count: 9)
                 var i:Int = 0
